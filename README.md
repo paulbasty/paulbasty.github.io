@@ -17,5 +17,3 @@ Five pages, switched in the browser with no reloads: Home, Watches, Parts Bin, S
 ## Status
 
 Placeholder, iterate freely. Prices, specs, and provenance are invented until the real builds are shot.
-
-See `DEPLOY.md` for putting it online with GitHub Pages.
