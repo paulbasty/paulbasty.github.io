@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECTIC · watches built from what survived</title>
+<meta name="description" content="Watches built from salvaged, serviced movements in fresh cases. Small batches, honest prices, no invented heritage.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23efe9dd'/%3E%3Ccircle cx='32' cy='32' r='21' fill='%23c6f042' stroke='%23171512' stroke-width='6'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ECTIC">
+<meta property="og:title" content="ECTIC · watches built from what survived">
+<meta property="og:description" content="Watches built from salvaged, serviced movements in fresh cases. Small batches, honest prices, no invented heritage.">
+<meta property="og:url" content="https://ectic.eu/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ECTIC · watches built from what survived">
+<meta name="twitter:description" content="Watches built from salvaged, serviced movements in fresh cases. Small batches, honest prices, no invented heritage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,900&family=Hanken+Grotesk:wght@400;500;700&family=Spline+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#efe9dd;--paper-2:#e6dfcf;--ink:#171512;--ink-soft:#4a453d;--line:#171512;
+  --a-lime:#c6f042;--a-orange:#ff5a1f;--a-blue:#2f6bff;--a-pink:#ff6ab5;
+  --accent:var(--a-lime);--r:6px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Hanken Grotesk',sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:900;letter-spacing:-.015em;line-height:1}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 24px}
+
+body.acc-blue{--accent:var(--a-blue)}
+body.acc-orange{--accent:var(--a-orange)}
+body.acc-pink{--accent:var(--a-pink)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:2px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{font-family:'Fraunces',serif;font-weight:900;font-size:25px;letter-spacing:.01em;display:flex;align-items:center;gap:9px;cursor:pointer;background:none;border:none;color:inherit}
+.brand .dot{width:11px;height:11px;background:var(--accent);border:2px solid var(--ink);border-radius:50%;display:inline-block}
+.brand img{height:22px;display:none;object-fit:contain}
+.brand.has-logo .dot{display:none}
+.nav-links{display:flex;gap:26px;align-items:center;font-family:'Spline Sans Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.03em}
+.nav-links a{padding-bottom:2px;border-bottom:2px solid transparent;transition:border-color .15s;cursor:pointer}
+.nav-links a:hover{border-color:var(--ink)}
+.nav-links a.active{border-color:var(--accent)}
+.cart{font-family:'Spline Sans Mono',monospace;font-size:13px;border:2px solid var(--ink);padding:5px 10px;background:var(--paper);cursor:not-allowed;border-radius:var(--r)}
+.burger{display:none;background:none;border:2px solid var(--ink);width:40px;height:36px;cursor:pointer;flex-direction:column;gap:4px;align-items:center;justify-content:center;border-radius:var(--r)}
+.burger span{width:18px;height:2px;background:var(--ink);display:block}
+.mobile-menu{display:none;border-bottom:2px solid var(--line);background:var(--paper-2)}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:14px 24px;border-top:1px solid rgba(23,21,18,.15);font-family:'Spline Sans Mono',monospace;font-size:14px;text-transform:uppercase;cursor:pointer}
+
+/* eyebrow / buttons */
+.eyebrow{font-family:'Spline Sans Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.06em;display:inline-flex;align-items:center;gap:8px;border:2px solid var(--ink);padding:5px 11px;background:var(--accent);border-radius:var(--r)}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{font-family:'Spline Sans Mono',monospace;font-size:14px;text-transform:uppercase;letter-spacing:.02em;padding:13px 22px;border:2px solid var(--ink);cursor:pointer;transition:transform .1s,box-shadow .1s;background:var(--paper);border-radius:var(--r)}
+.btn:active{transform:translate(2px,2px)}
+.btn-primary{background:var(--ink);color:var(--paper);box-shadow:5px 5px 0 var(--accent)}
+.btn-primary:hover{box-shadow:7px 7px 0 var(--accent)}
+.btn-ghost:hover{background:var(--paper-2)}
+
+/* hero */
+.hero{border-bottom:2px solid var(--line);overflow:hidden}
+.hero-in{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center;padding:56px 0 62px}
+.hero .eyebrow{margin-bottom:24px}
+.hero h1{font-size:clamp(46px,7.6vw,96px);line-height:.98}
+.hero h1 em{font-style:italic;font-weight:900;color:var(--a-orange)}
+.hero .sub{font-size:20px;max-width:34ch;margin:24px 0 32px;color:var(--ink-soft)}
+
+/* band */
+.band{border-bottom:2px solid var(--line);padding:52px 0 48px}
+.band .eyebrow{margin-bottom:22px}
+.band h1{font-size:clamp(38px,6vw,74px);line-height:.98;max-width:16ch}
+.band .sub{font-size:19px;max-width:52ch;margin-top:22px;color:var(--ink-soft)}
+
+/* watch */
+.watch{--wface:#141414;position:relative;width:230px;height:230px;filter:drop-shadow(0 22px 22px rgba(0,0,0,.28))}
+.case{position:absolute;inset:0;border-radius:50%;background:linear-gradient(145deg,#d9d4c7,#a9a396);border:3px solid var(--ink);display:flex;align-items:center;justify-content:center}
+.bezel{width:86%;height:86%;border-radius:50%;background:var(--wface);border:3px solid var(--ink);position:relative;overflow:hidden}
+.dial-accent{position:absolute;bottom:0;left:0;right:0;height:46%;background:var(--accent)}
+.tick{position:absolute;left:50%;top:8px;width:2px;height:10px;background:var(--paper);transform-origin:50% 107px}
+.hand{position:absolute;left:50%;bottom:50%;background:var(--paper);transform-origin:bottom center;border-radius:2px}
+.hand.h{width:5px;height:52px;transform:translateX(-50%) rotate(38deg)}
+.hand.m{width:3px;height:74px;transform:translateX(-50%) rotate(-70deg)}
+.hand.s{width:2px;height:78px;background:var(--a-orange);transform:translateX(-50%) rotate(160deg)}
+.pin{position:absolute;left:50%;top:50%;width:11px;height:11px;background:var(--a-orange);border:2px solid var(--paper);border-radius:50%;transform:translate(-50%,-50%);z-index:3}
+.crown{position:absolute;right:-9px;top:50%;transform:translateY(-50%);width:14px;height:24px;background:linear-gradient(#cfc9bb,#9c9689);border:3px solid var(--ink);border-radius:3px}
+.lug{position:absolute;width:26px;height:34px;background:linear-gradient(#cfc9bb,#a9a396);border:3px solid var(--ink);z-index:-1;border-radius:5px}
+.lug.tl{top:-12px;left:44px;transform:rotate(-24deg)}
+.lug.tr{top:-12px;right:44px;transform:rotate(24deg)}
+.lug.bl{bottom:-12px;left:44px;transform:rotate(24deg)}
+.lug.br{bottom:-12px;right:44px;transform:rotate(-24deg)}
+.plinth{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.plinth-base{margin-top:26px;width:200px;height:14px;background:var(--paper-2);border:2px solid var(--ink);border-radius:var(--r)}
+.plinth-tag{font-family:'Spline Sans Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-top:12px;color:var(--ink-soft)}
+
+/* ticker */
+.ticker{background:var(--ink);color:var(--paper);border-bottom:2px solid var(--line);overflow:hidden;padding:12px 0}
+.ticker-track{display:flex;white-space:nowrap;animation:scroll 28s linear infinite;width:max-content}
+.ticker span{font-family:'Spline Sans Mono',monospace;font-size:14px;text-transform:uppercase;letter-spacing:.04em;padding:0 26px;display:inline-flex;align-items:center;gap:26px}
+.ticker b{color:var(--accent);font-weight:400}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections */
+.sec{padding:66px 0;border-bottom:2px solid var(--line)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:38px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(32px,4.8vw,54px)}
+.sec-head .note{font-family:'Spline Sans Mono',monospace;font-size:13px;text-transform:uppercase;color:var(--ink-soft);max-width:36ch;text-align:right;line-height:1.6}
+.note-line{font-family:'Spline Sans Mono',monospace;font-size:12px;text-transform:uppercase;color:var(--ink-soft)}
+
+/* filters */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.filter-btn{font-family:'Spline Sans Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.03em;padding:8px 14px;border:2px solid var(--ink);background:var(--paper);cursor:pointer;border-radius:var(--r)}
+.filter-btn:hover{background:var(--paper-2)}
+.filter-btn.on{background:var(--ink);color:var(--paper)}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);border:2px solid var(--line);border-radius:var(--r);overflow:hidden}
+.card{border-right:2px solid var(--line);border-bottom:2px solid var(--line);background:var(--paper);padding:22px 20px 24px;display:flex;flex-direction:column;transition:background .15s;position:relative}
+.card:hover{background:var(--paper-2)}
+.card .stage{aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.card .watch{width:150px;height:150px;filter:drop-shadow(0 14px 14px rgba(0,0,0,.24))}
+.card .watch .tick{transform-origin:50% 69px;height:7px;top:6px}
+.card .watch .hand.h{height:32px}
+.card .watch .hand.m{height:48px}
+.card .watch .hand.s{height:50px}
+.card .watch .lug{width:18px;height:24px}
+.card .watch .lug.tl,.card .watch .lug.tr{top:-8px}
+.card .watch .lug.bl,.card .watch .lug.br{bottom:-8px}
+.card .watch .lug.tl{left:28px}.card .watch .lug.tr{right:28px}
+.card .watch .lug.bl{left:28px}.card .watch .lug.br{right:28px}
+.stock{position:absolute;top:16px;right:16px;font-family:'Spline Sans Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.04em;padding:3px 8px;border:1.5px solid var(--ink);border-radius:var(--r)}
+.stock.live{background:var(--a-lime)}
+.stock.one{background:var(--a-pink)}
+.stock.gone{background:transparent;color:var(--ink-soft);border-color:var(--ink-soft)}
+.card h3{font-size:24px;margin-bottom:4px}
+.card .ref{font-family:'Spline Sans Mono',monospace;font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.03em;margin-bottom:14px}
+.spec{font-family:'Spline Sans Mono',monospace;font-size:12px;line-height:1.75;border-top:1px solid rgba(23,21,18,.2);padding-top:12px;margin-bottom:16px}
+.spec div{display:flex;justify-content:space-between;gap:10px}
+.spec div span:first-child{color:var(--ink-soft)}
+.card .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between}
+.price{font-family:'Fraunces',serif;font-weight:900;font-size:24px}
+.buy{font-family:'Spline Sans Mono',monospace;font-size:12px;text-transform:uppercase;border:2px solid var(--ink);padding:7px 13px;background:var(--paper);cursor:pointer;border-radius:var(--r)}
+.buy:hover{background:var(--ink);color:var(--paper)}
+.buy:disabled{opacity:.4;cursor:not-allowed;text-decoration:line-through}
+
+/* story / essay */
+.story-in{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:start}
+.story h2{font-size:clamp(30px,4.2vw,46px);margin-bottom:26px}
+.story p{margin-bottom:20px;font-size:18.5px;max-width:54ch;line-height:1.6}
+.story p .hl{background:var(--accent);padding:0 4px}
+.essay{max-width:62ch;margin:0 auto}
+.essay p{font-size:19px;line-height:1.66;margin-bottom:22px}
+.essay p .hl{background:var(--accent);padding:0 4px}
+.pullquote{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(26px,3.6vw,40px);line-height:1.12;letter-spacing:-.015em;margin:36px 0;padding-left:22px;border-left:6px solid var(--accent)}
+
+/* sheet */
+.sheet{border:2px solid var(--line);background:var(--paper-2);border-radius:var(--r);overflow:hidden}
+.sheet-h{font-family:'Spline Sans Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.05em;padding:12px 16px;border-bottom:2px solid var(--line);background:var(--ink);color:var(--paper)}
+.sheet-row{display:flex;justify-content:space-between;gap:12px;padding:11px 16px;font-family:'Spline Sans Mono',monospace;font-size:13px;border-bottom:1px solid rgba(23,21,18,.18)}
+.sheet-row:last-child{border-bottom:none}
+.sheet-row span:first-child{color:var(--ink-soft)}
+
+/* perks / steps */
+.perks{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--line);border-radius:var(--r);overflow:hidden;max-width:760px;margin:0 auto 40px}
+.perks.four{grid-template-columns:repeat(4,1fr);max-width:none}
+.perk{padding:26px 24px;border-right:2px solid var(--line)}
+.perk:last-child{border-right:none}
+.perk .n{font-family:'Spline Sans Mono',monospace;font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+.perk p{font-size:17px}
+
+/* signup */
+.signup{text-align:center;padding:74px 0}
+.signup h2{font-size:clamp(32px,5.2vw,60px);margin-bottom:16px}
+.signup .lead{color:var(--ink-soft);margin-bottom:30px;font-family:'Spline Sans Mono',monospace;font-size:14px;text-transform:uppercase;letter-spacing:.02em}
+.form{display:flex;max-width:460px;margin:0 auto;border:2px solid var(--ink);border-radius:var(--r);overflow:hidden}
+.form input{flex:1;border:none;background:var(--paper);padding:14px 16px;font-family:'Spline Sans Mono',monospace;font-size:14px;outline:none;min-width:0}
+.form button{border:none;border-left:2px solid var(--ink);background:var(--ink);color:var(--paper);font-family:'Spline Sans Mono',monospace;font-size:13px;text-transform:uppercase;padding:0 20px;cursor:pointer}
+.form button:hover{background:var(--a-orange)}
+.form-note{font-family:'Spline Sans Mono',monospace;font-size:11px;color:var(--ink-soft);margin-top:14px}
+
+/* footer */
+.foot-wrap{background:var(--ink);color:var(--paper);padding:46px 0 30px}
+.foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:34px}
+.foot-brand{font-family:'Fraunces',serif;font-weight:900;font-size:44px;letter-spacing:.01em;display:flex;align-items:center;gap:12px}
+.foot-brand img{height:34px;display:none;object-fit:contain;filter:invert(1) brightness(1.7)}
+.foot-blurb{font-family:'Spline Sans Mono',monospace;font-size:13px;opacity:.7;max-width:32ch;margin-top:12px}
+.foot-cols{display:flex;gap:56px;flex-wrap:wrap}
+.foot-col h4{font-family:'Spline Sans Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin-bottom:12px}
+.foot-col a{display:block;font-family:'Spline Sans Mono',monospace;font-size:13px;color:var(--paper);opacity:.8;padding:3px 0;cursor:pointer}
+.foot-col a:hover{opacity:1;color:var(--accent)}
+.foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(239,233,221,.2);padding-top:20px;font-family:'Spline Sans Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.03em;opacity:.7}
+
+/* product detail */
+.card{cursor:pointer}
+.prod{padding:40px 0 0}
+.crumb{display:inline-block;font-family:'Spline Sans Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:22px;cursor:pointer;border-bottom:2px solid transparent}
+.crumb:hover{border-color:var(--ink)}
+.prod-top{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start;padding-bottom:56px;border-bottom:2px solid var(--line)}
+.gallery .main{border:2px solid var(--line);border-radius:var(--r);background:var(--paper-2);min-height:360px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:30px}
+.gallery .gtag{position:absolute;top:12px;left:12px;font-family:'Spline Sans Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.thumb{border:2px solid var(--line);border-radius:var(--r);background:var(--paper-2);aspect-ratio:1;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.thumb .wscale{position:absolute;top:50%;left:50%;transform:translate(-50%,-56%) scale(.30);transform-origin:center}
+.thumb .disc{width:96px;height:96px;border-radius:50%;background:linear-gradient(145deg,#d9d4c7,#a9a396);border:3px solid var(--ink);position:relative;margin-top:-6px}
+.thumb .disc i{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.thumb .disc i:nth-child(1){top:11px;left:11px}
+.thumb .disc i:nth-child(2){top:11px;right:11px}
+.thumb .disc i:nth-child(3){bottom:11px;left:11px}
+.thumb .disc i:nth-child(4){bottom:11px;right:11px}
+.thumb .disc:after{content:"";position:absolute;inset:32px;border-radius:50%;border:3px solid rgba(23,21,18,.35)}
+.thumb small{position:absolute;bottom:8px;left:0;right:0;text-align:center;font-family:'Spline Sans Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-soft)}
+.buy-panel .eyebrow{margin-bottom:18px}
+.buy-panel h1{font-size:clamp(34px,5vw,58px);margin-bottom:14px}
+.price-row{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.price-row .price{font-family:'Fraunces',serif;font-weight:900;font-size:40px}
+.p-desc{font-size:18px;line-height:1.6;color:var(--ink-soft);max-width:48ch;margin-bottom:26px}
+.p-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.prod-more{padding:56px 0}
+@media(max-width:920px){.prod-top{grid-template-columns:1fr;gap:30px}}
+.page{display:none}
+.page.show{display:block}
+
+@media(max-width:920px){
+  .hero-in{grid-template-columns:1fr;gap:20px}
+  .plinth{order:-1}
+  .story-in{grid-template-columns:1fr;gap:28px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .perks.four{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .grid{grid-template-columns:1fr}
+  .perks,.perks.four{grid-template-columns:1fr}
+  .perk{border-right:none;border-bottom:2px solid var(--line)}
+  .perk:last-child{border-bottom:none}
+  .sec-head .note{text-align:left}
+  .foot-top{flex-direction:column}
+  .band h1{font-size:clamp(34px,10vw,54px)}
+}
+@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-in">
+    <button class="brand" data-go="home"><span class="dot"></span><img id="navLogo" alt="ECTIC"><span id="navWordmark">ECTIC</span></button>
+    <div class="nav-links">
+      <a data-go="watches">Watches</a>
+      <a data-go="parts">Parts Bin</a>
+      <a data-go="story">Story</a>
+      <a data-go="list">List</a>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <span class="cart">Cart [0]</span>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a data-go="watches">Watches</a>
+    <a data-go="parts">Parts Bin</a>
+    <a data-go="story">Story</a>
+    <a data-go="list">List</a>
+  </div>
+</nav>
+
+<!-- ================= HOME ================= -->
+<div class="page" id="page-home">
+  <header class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <span class="eyebrow">Salvaged, then rebuilt. Occasionally cursed.</span>
+        <h1>Dead movements, <em>second lives.</em></h1>
+        <p class="sub">A watch is a small argument about value. Ours runs on a salvaged calibre and costs what it costs.</p>
+        <div class="btns">
+          <a class="btn btn-primary" data-go="watches">See the builds</a>
+          <a class="btn btn-ghost" data-go="story">How it works</a>
+        </div>
+      </div>
+      <div class="plinth">
+        <div class="watch" style="--wface:#1c1c1c">
+          <span class="lug tl"></span><span class="lug tr"></span><span class="lug bl"></span><span class="lug br"></span>
+          <div class="case"><div class="bezel" id="heroBezel">
+            <div class="dial-accent"></div>
+            <div class="hand m"></div><div class="hand h"></div><div class="hand s"></div>
+            <div class="pin"></div>
+          </div></div>
+          <span class="crown"></span>
+        </div>
+        <div class="plinth-base"></div>
+        <div class="plinth-tag">// placeholder render, swap for real shots</div>
+      </div>
+    </div>
+  </header>
+  <div class="ticker"><div class="ticker-track">
+    <span>Donor calibres, <b>reborn</b> &#10022; No two alike &#10022; Priced like we <b>mean it</b> &#10022; Serviced, not shrink-wrapped &#10022; Provenance you can trace &#10022; Wear it, do not flip it &#10022;</span>
+    <span>Donor calibres, <b>reborn</b> &#10022; No two alike &#10022; Priced like we <b>mean it</b> &#10022; Serviced, not shrink-wrapped &#10022; Provenance you can trace &#10022; Wear it, do not flip it &#10022;</span>
+  </div></div>
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>The Parts Bin<br>Collection</h2>
+        <p class="note">Four builds shown here. The numbers are placeholder and the provenance is whatever we could verify.</p>
+      </div>
+      <div class="grid" id="gridHome"></div>
+      <div class="btns" style="margin-top:28px"><a class="btn btn-ghost" data-go="watches">See all eight builds</a></div>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap story-in">
+      <div class="story">
+        <h2>Where these come from</h2>
+        <p>We buy dead and dying watches by the crate. The movements that still run <span class="hl">get cleaned and regulated</span>, then rehomed in fresh cases behind dials we draw ourselves.</p>
+        <p>Most brands sell a story about lineage that a marketing department wrote last spring. A salvaged calibre carries a real history instead, and most of it is gloriously unglamorous.</p>
+        <p>So every piece is a bit of a mongrel, and that is the entire point. You get <span class="hl">an object that earns its keep</span> on the wrist for the price of a decent dinner.</p>
+        <div class="btns" style="margin-top:8px"><a class="btn btn-ghost" data-go="story">Read the longer version</a></div>
+      </div>
+      <div class="sheet">
+        <div class="sheet-h">// house spec &#183; typical build</div>
+        <div class="sheet-row"><span>Movement</span><span>Donor, serviced</span></div>
+        <div class="sheet-row"><span>Case</span><span>New, 37 to 39mm</span></div>
+        <div class="sheet-row"><span>Crystal</span><span>Sapphire, flat</span></div>
+        <div class="sheet-row"><span>Dial</span><span>In-house design</span></div>
+        <div class="sheet-row"><span>Water resist</span><span>Splash, be sensible</span></div>
+        <div class="sheet-row"><span>Warranty</span><span>Twelve months, real</span></div>
+        <div class="sheet-row"><span>Provenance</span><span>Whatever survived</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="signup">
+    <div class="wrap">
+      <span class="eyebrow" style="background:var(--a-blue);color:var(--paper)">The Parts Bin list</span>
+      <h2 style="margin-top:20px">Get first dibs<br>on the next crate.</h2>
+      <p class="lead">Small batches. When they are gone, they are gone.</p>
+      <div class="form"><input type="email" class="email" placeholder="you@somewhere.net" aria-label="Email"><button class="joinBtn">Join</button></div>
+      <p class="form-note">// mock form, nothing is sent anywhere</p>
+    </div>
+  </section>
+</div>
+
+<!-- ================= WATCHES ================= -->
+<div class="page" id="page-watches">
+  <header class="band">
+    <div class="wrap">
+      <span class="eyebrow">The core range</span>
+      <h1>Everything currently on the bench.</h1>
+      <p class="sub">Eight builds, most of them one-offs or close to it. What sells out does not come back in the same form, because the next crate never holds the same parts.</p>
+    </div>
+  </header>
+  <section class="sec">
+    <div class="wrap">
+      <div class="filters" id="filters">
+        <button class="filter-btn on" data-filter="all">All builds</button>
+        <button class="filter-btn" data-filter="live">In stock</button>
+        <button class="filter-btn" data-filter="one">One-offs</button>
+        <button class="filter-btn" data-filter="gone">Sold out</button>
+      </div>
+      <div class="grid" id="gridAll"></div>
+      <p class="note-line" style="margin-top:22px">// prices and specs are placeholder, swap when the real builds are shot</p>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PARTS BIN ================= -->
+<div class="page" id="page-parts">
+  <header class="band">
+    <div class="wrap">
+      <span class="eyebrow">The Parts Bin</span>
+      <h1>Where the watches begin.</h1>
+      <p class="sub">A crate of dead watches is a strange kind of archive. We read it, sort it, and keep whatever still keeps time.</p>
+    </div>
+  </header>
+  <section class="sec">
+    <div class="wrap story-in">
+      <div class="story">
+        <h2>The honest bit</h2>
+        <p>Every build starts as somebody else's discard. We buy job lots of broken and forgotten watches, then spend a week working out which movements have any life left in them.</p>
+        <p>The ones that run get serviced and set aside. The ones that do not become the parts that keep the others going, so <span class="hl">nothing in the crate is truly wasted</span>.</p>
+        <p>This shows roughly what sits in the bin right now, before any of it becomes something you would actually wear. It updates when we remember to update it.</p>
+        <div class="btns" style="margin-top:8px"><a class="btn btn-primary" data-go="watches">See what made it out</a></div>
+      </div>
+      <div class="sheet">
+        <div class="sheet-h">// current crate &#183; updated when we remember</div>
+        <div class="sheet-row"><span>Seiko 7009 &#215;4</span><span>running</span></div>
+        <div class="sheet-row"><span>Miyota 8215 &#215;2</span><span>running</span></div>
+        <div class="sheet-row"><span>ETA quartz &#215;9</span><span>untested</span></div>
+        <div class="sheet-row"><span>Vostok 2409 &#215;1</span><span>wants a mainspring</span></div>
+        <div class="sheet-row"><span>Citizen Miyota &#215;3</span><span>running</span></div>
+        <div class="sheet-row"><span>Unmarked 17-jewel &#215;2</span><span>seized</span></div>
+        <div class="sheet-row"><span>Assorted dials</span><span>a shoebox</span></div>
+        <div class="sheet-row"><span>Hope</span><span>plenty</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head"><h2>What happens on the bench</h2><p class="note">Four steps, plainly. No secret sauce, because there is not one.</p></div>
+      <div class="perks four">
+        <div class="perk"><div class="n">01 &#183; Sort</div><p>Wind every movement and see what ticks. Most do not.</p></div>
+        <div class="perk"><div class="n">02 &#183; Service</div><p>Strip, clean and oil the survivors, then regulate them.</p></div>
+        <div class="perk"><div class="n">03 &#183; Dress</div><p>New case, sapphire and a dial we drew for the occasion.</p></div>
+        <div class="perk"><div class="n">04 &#183; Send</div><p>Photographed, listed and posted with a real warranty.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= STORY ================= -->
+<div class="page" id="page-story">
+  <header class="band">
+    <div class="wrap">
+      <span class="eyebrow">Our thing</span>
+      <h1>A serious watch does not need a straight face.</h1>
+      <p class="sub">ECTIC exists because the gap between what a watch costs and what a watch is had grown absurd.</p>
+    </div>
+  </header>
+  <section class="sec">
+    <div class="wrap">
+      <div class="essay">
+        <p>Somewhere along the way the watch stopped telling the time and started telling everyone your salary. A whole industry now sells lineage by the gram, most of it invented and all of it expensive.</p>
+        <p>A mechanical movement is a small, clever machine that does one honest job. Wrap it in enough marketing and the same machine becomes a status object, a hedge, an entry ticket. We find that funny, and a little sad.</p>
+        <div class="pullquote">We would rather sell you a good movement with an honest past than a story with a warranty card.</div>
+        <p>So we work the other way round. We start with a calibre that has <span class="hl">already lived a life</span>, put it right on the bench, then give it a case and a dial worth a second glance.</p>
+        <p>The result costs less than a night out and carries more character than watches ten times the price. It will not appreciate. It was never meant to. Wear it until it stops, then bring it back and we will start it again.</p>
+      </div>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap story-in">
+      <div class="story">
+        <h2>The short version, for people in a hurry</h2>
+        <p>Salvaged movements, serviced properly. Fresh cases and dials we design. Prices that assume you have a mortgage.</p>
+        <p>No heritage, no waiting-list theatre, no lume you could read from orbit. Just watches with a past, sold by people who like them.</p>
+      </div>
+      <div class="sheet">
+        <div class="sheet-h">// house spec &#183; typical build</div>
+        <div class="sheet-row"><span>Movement</span><span>Donor, serviced</span></div>
+        <div class="sheet-row"><span>Case</span><span>New, 37 to 39mm</span></div>
+        <div class="sheet-row"><span>Crystal</span><span>Sapphire, flat</span></div>
+        <div class="sheet-row"><span>Dial</span><span>In-house design</span></div>
+        <div class="sheet-row"><span>Water resist</span><span>Splash, be sensible</span></div>
+        <div class="sheet-row"><span>Warranty</span><span>Twelve months, real</span></div>
+        <div class="sheet-row"><span>Provenance</span><span>Whatever survived</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= LIST ================= -->
+<div class="page" id="page-list">
+  <header class="band">
+    <div class="wrap">
+      <span class="eyebrow">The Parts Bin list</span>
+      <h1>One email when a crate lands.</h1>
+      <p class="sub">No schedule and no filler. You hear from us when there is something real to buy.</p>
+    </div>
+  </header>
+  <section class="sec">
+    <div class="wrap">
+      <div class="perks">
+        <div class="perk"><div class="n">// first look</div><p>First access to each batch before it goes public, which matters when a build is a one-off.</p></div>
+        <div class="perk"><div class="n">// the receipts</div><p>A plain note on what came in and exactly what we did to it on the bench.</p></div>
+      </div>
+      <div class="signup" style="padding:24px 0 0">
+        <h2>Join the list.</h2>
+        <p class="lead">We send maybe one message a month, sometimes less.</p>
+        <div class="form"><input type="email" class="email" placeholder="you@somewhere.net" aria-label="Email"><button class="joinBtn">Join</button></div>
+        <p class="form-note">// mock form, nothing is sent anywhere</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PRODUCT ================= -->
+<div class="page" id="page-product">
+  <div class="wrap" id="prodMount"></div>
+</div>
+
+<!-- FOOTER -->
+<footer class="foot-wrap">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand"><img id="footLogo" alt="ECTIC"><span id="footWordmark">ECTIC</span></div>
+        <p class="foot-blurb">We take the movements seriously. Everything else, less so.</p>
+        <p class="foot-blurb">Something broke, or you just want to talk shop. <a href="mailto:contact@ectic.eu" style="color:var(--accent)">contact@ectic.eu</a></p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col"><h4>Shop</h4><a data-go="watches">All builds</a><a data-go="parts">Parts Bin</a><a data-go="watches">Sold out</a></div>
+        <div class="foot-col"><h4>Info</h4><a data-go="story">Our thing</a><a data-go="parts">Servicing</a><a data-go="list">The list</a></div>
+        <div class="foot-col"><h4>Lurk</h4><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">The forum thread</a></div>
+        <div class="foot-col"><h4>Say hello</h4><a href="mailto:contact@ectic.eu">contact@ectic.eu</a></div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&#169; ECTIC, placeholder site, iterate freely</span>
+      <span>Bucharest &#183; built from what survived</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---- OPTIONAL LOGO ----
+   Paste your logo's URL or a base64 data URI between the quotes below and both
+   the nav and footer will switch from the ECTIC wordmark to the image. */
+var LOGO_SRC = "data:image/png;base64,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";
+(function(){
+  if(!LOGO_SRC)return;
+  [["navLogo","navWordmark"],["footLogo","footWordmark"]].forEach(function(p){
+    var img=document.getElementById(p[0]),txt=document.getElementById(p[1]);
+    if(img){img.src=LOGO_SRC;img.style.display="block";}
+    if(txt){txt.style.display="none";}
+  });
+  var b=document.querySelector('.brand');if(b)b.classList.add('has-logo');
+})();
+
+/* ---- products ---- */
+var PRODUCTS=[
+  {name:"The Scavenger",  ref:"BIN-001",face:"#181818",accent:"#c6f042",cal:"Donor automatic",  size:"38mm",price:"\u00A3210",stock:"live",label:"In stock"},
+  {name:"Night Shift",    ref:"BIN-002",face:"#101418",accent:"#2f6bff",cal:"Hand-wound salvage",size:"37mm",price:"\u00A3185",stock:"one", label:"One of one"},
+  {name:"Cheap Thrill",   ref:"BIN-003",face:"#1a1216",accent:"#ff6ab5",cal:"Quartz transplant", size:"36mm",price:"\u00A395", stock:"live",label:"In stock"},
+  {name:"Last Rites",     ref:"BIN-004",face:"#181410",accent:"#ff5a1f",cal:"Donor automatic",  size:"39mm",price:"\u00A3240",stock:"gone",label:"Sold out"},
+  {name:"Boot Sale",      ref:"BIN-005",face:"#14170f",accent:"#c6f042",cal:"Quartz transplant", size:"37mm",price:"\u00A385", stock:"live",label:"In stock"},
+  {name:"The Understudy", ref:"BIN-006",face:"#0f1418",accent:"#2f6bff",cal:"Hand-wound salvage",size:"36mm",price:"\u00A3170",stock:"one", label:"One of one"},
+  {name:"Afters",         ref:"BIN-007",face:"#181016",accent:"#ff6ab5",cal:"Donor automatic",  size:"38mm",price:"\u00A3225",stock:"live",label:"In stock"},
+  {name:"Pauper's Grave", ref:"BIN-008",face:"#171410",accent:"#ff5a1f",cal:"Donor automatic",  size:"39mm",price:"\u00A3260",stock:"gone",label:"Sold out"}
+];
+function ticks(){var o="";for(var i=0;i<12;i++){o+='<span class="tick" style="transform:rotate('+(i*30)+'deg)"></span>';}return o;}
+function cardHTML(p){
+  var dis=p.stock==='gone'?'disabled':'';var txt=p.stock==='gone'?'Gone':'Add';
+  var ix=PRODUCTS.indexOf(p);var addAttr=p.stock==='gone'?'':' data-add="'+ix+'"';
+  return '<article class="card" data-open="'+ix+'" data-stock="'+p.stock+'"><span class="stock '+p.stock+'">'+p.label+'</span>'
+    +'<div class="stage"><div class="watch" style="--wface:'+p.face+'">'
+    +'<span class="lug tl"></span><span class="lug tr"></span><span class="lug bl"></span><span class="lug br"></span>'
+    +'<div class="case"><div class="bezel">'+ticks()
+    +'<div class="dial-accent" style="background:'+p.accent+'"></div>'
+    +'<div class="hand m"></div><div class="hand h"></div><div class="hand s"></div><div class="pin"></div>'
+    +'</div></div><span class="crown"></span></div></div>'
+    +'<h3>'+p.name+'</h3><div class="ref">Ref. '+p.ref+'</div>'
+    +'<div class="spec"><div><span>Calibre</span><span>'+p.cal+'</span></div>'
+    +'<div><span>Case</span><span>'+p.size+'</span></div>'
+    +'<div><span>Crystal</span><span>Sapphire</span></div></div>'
+    +'<div class="foot"><span class="price">'+p.price+'</span><button class="buy" '+dis+addAttr+'>'+txt+'</button></div></article>';
+}
+function renderGrid(id,list){var el=document.getElementById(id);if(el)el.innerHTML=list.map(cardHTML).join('');}
+renderGrid('gridHome',PRODUCTS.slice(0,4));
+renderGrid('gridAll',PRODUCTS);
+var hb=document.getElementById('heroBezel');if(hb)hb.insertAdjacentHTML('afterbegin',ticks());
+
+/* ---- filters ---- */
+(function(){
+  var bar=document.getElementById('filters');if(!bar)return;
+  bar.addEventListener('click',function(e){
+    var btn=e.target.closest('.filter-btn');if(!btn)return;
+    bar.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('on');});
+    btn.classList.add('on');var f=btn.getAttribute('data-filter');
+    document.querySelectorAll('#gridAll .card').forEach(function(c){
+      c.style.display=(f==='all'||c.getAttribute('data-stock')===f)?'flex':'none';
+    });
+  });
+})();
+
+/* ---- signup (mock) ---- */
+document.addEventListener('click',function(e){
+  var btn=e.target.closest('.joinBtn');if(!btn)return;
+  var box=btn.closest('.signup')||btn.closest('.wrap');
+  var input=box.querySelector('.email'),note=box.querySelector('.form-note');
+  var v=(input.value||'').trim();
+  if(v&&v.indexOf('@')>-1){note.textContent='// mock only, but noted. you would be on the list.';note.style.color='var(--ink)';}
+  else{note.textContent='// enter a real-looking email first';note.style.color='var(--a-orange)';}
+});
+
+/* ---- router ---- */
+var PAGES=['home','watches','parts','story','list','product'];
+var ACCENT={home:'',watches:'',parts:'acc-blue',story:'acc-orange',list:'acc-pink',product:''};
+function go(name){
+  if(PAGES.indexOf(name)<0)name='home';
+  PAGES.forEach(function(p){var el=document.getElementById('page-'+p);if(el)el.classList.toggle('show',p===name);});
+  var navName=(name==='product')?'watches':name;
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.classList.toggle('active',a.getAttribute('data-go')===navName);
+  });
+  document.body.style.removeProperty('--accent');
+  document.body.className=ACCENT[name]||'';
+  if(name==='product'&&window.__prodAccent){document.body.style.setProperty('--accent',window.__prodAccent);}
+  window.scrollTo(0,0);
+}
+
+function watchMarkup(p){
+  return '<div class="watch" style="--wface:'+p.face+'">'
+    +'<span class="lug tl"></span><span class="lug tr"></span><span class="lug bl"></span><span class="lug br"></span>'
+    +'<div class="case"><div class="bezel">'+ticks()
+    +'<div class="dial-accent" style="background:'+p.accent+'"></div>'
+    +'<div class="hand m"></div><div class="hand h"></div><div class="hand s"></div><div class="pin"></div>'
+    +'</div></div><span class="crown"></span></div>';
+}
+function specFor(p){
+  var t=p.cal.toLowerCase();
+  var reserve=t.indexOf('quartz')>-1?'Battery, about two years':(t.indexOf('hand')>-1?'42 hours, hand wound':'40 hours');
+  var num=parseInt(p.size,10)||38;
+  return [['Movement',p.cal+', serviced'],['Power reserve',reserve],['Case','Stainless steel, '+p.size],
+    ['Lug to lug',(num+8)+'mm'],['Crystal','Flat sapphire'],['Water resistance','Splash, be sensible'],
+    ['Strap','20mm, quick-release'],['Warranty','Twelve months, real']];
+}
+function descFor(p){
+  var t=p.cal.toLowerCase();
+  if(t.indexOf('quartz')>-1)return 'A quartz transplant in a body that has seen things. It keeps better time than anything at this price has a right to, and asks nothing of you but a battery every couple of years.';
+  if(t.indexOf('hand')>-1)return 'A hand winder rescued from a drawer and put right on the bench. You wind it each morning, which is either a chore or a small ritual, depending on your temperament.';
+  return 'An automatic pulled from a donor, cleaned and regulated until it behaves. It winds itself as you move and carries an honest past, for a fraction of what its character suggests.';
+}
+function rowsHTML(arr){return arr.map(function(r){return '<div class="sheet-row"><span>'+r[0]+'</span><span>'+r[1]+'</span></div>';}).join('');}
+function productHTML(p,i){
+  var word=p.stock==='one'?'One of one':(p.stock==='gone'?'Sold out':'In stock');
+  var others=PRODUCTS.filter(function(x){return x!==p;}).slice(0,4);
+  var actions=(p.stock==='gone')
+    ? '<button class="btn big-buy" disabled style="opacity:.4;text-decoration:line-through;cursor:not-allowed">Sold out</button>'
+    : '<button class="btn btn-primary big-buy" data-add="'+i+'">Add to cart</button>';
+  return '<div class="prod">'
+    +'<a class="crumb" data-go="watches">&#8592; Back to all builds</a>'
+    +'<div class="prod-top">'
+      +'<div class="gallery">'
+        +'<div class="main"><span class="gtag">// placeholder, drop real photos here</span>'+watchMarkup(p)+'</div>'
+        +'<div class="thumbs">'
+          +'<div class="thumb"><span class="wscale">'+watchMarkup(p)+'</span><small>Front</small></div>'
+          +'<div class="thumb"><span class="disc"><i></i><i></i><i></i><i></i></span><small>Caseback</small></div>'
+          +'<div class="thumb"><span class="wscale">'+watchMarkup(p)+'</span><small>On wrist</small></div>'
+          +'<div class="thumb"><span class="wscale">'+watchMarkup(p)+'</span><small>Dial macro</small></div>'
+        +'</div>'
+      +'</div>'
+      +'<div class="buy-panel">'
+        +'<span class="eyebrow">Ref. '+p.ref+' &#183; '+word+'</span>'
+        +'<h1>'+p.name+'</h1>'
+        +'<div class="price-row"><span class="price">'+p.price+'</span><span class="stock '+p.stock+'">'+p.label+'</span></div>'
+        +'<p class="p-desc">'+descFor(p)+'</p>'
+        +'<div class="p-actions">'+actions+'<button class="btn btn-ghost" data-go="list">Tell me when back</button></div>'
+        +'<div class="sheet"><div class="sheet-h">// spec sheet</div>'+rowsHTML(specFor(p))+'</div>'
+        +'<div class="sheet" style="margin-top:16px"><div class="sheet-h">// pricing, shipping and returns</div>'
+          +rowsHTML([['Price',p.price+', all in'],['Includes','Service and twelve-month cover'],
+            ['Dispatch','Within five working days, tracked'],['Shipping','Free in Romania, at cost elsewhere'],
+            ['Returns','Fourteen days, unworn'],['Run size',p.stock==='one'?'One of one':'Small batch']])
+        +'</div>'
+      +'</div>'
+    +'</div>'
+    +'<div class="prod-more"><div class="sec-head"><h2>More from the bin</h2><p class="note">Every build is its own thing. Grab one before the crate empties.</p></div>'
+      +'<div class="grid">'+others.map(function(x){return cardHTML(x);}).join('')+'</div></div>'
+    +'</div>';
+}
+function openProduct(i){var p=PRODUCTS[i];if(!p)return;window.__prodAccent=p.accent;document.getElementById('prodMount').innerHTML=productHTML(p,i);go('product');}
+
+var cartN=0;
+function addToCart(){cartN++;var c=document.querySelector('.cart');if(c)c.textContent='Cart ['+cartN+']';}
+
+document.addEventListener('click',function(e){
+  var add=e.target.closest('[data-add]');
+  if(add){e.preventDefault();e.stopPropagation();addToCart();if(add.classList.contains('big-buy')){add.textContent='Added';}return;}
+  var goEl=e.target.closest('[data-go]');
+  if(goEl){e.preventDefault();document.getElementById('mobileMenu').classList.remove('open');go(goEl.getAttribute('data-go'));return;}
+  var card=e.target.closest('.card[data-open]');
+  if(card){openProduct(parseInt(card.getAttribute('data-open'),10));}
+});
+document.getElementById('burger').addEventListener('click',function(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+go('home');
+</script>
+</body>
+</html>
